@@ -4,6 +4,7 @@ const Queries = `
         teamByName(name: String!): [Team]
         team(teamId: ID!): [Team]
         league(leagueId: ID!): [League]
+        player(playerId: ID!): [Player]
     }
 `;
 

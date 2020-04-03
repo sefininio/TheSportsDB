@@ -1,4 +1,5 @@
 import leagueResolver from './league/retrieve';
+import playerResolver from './player/retrieve';
 import socialResolver from './social/retrieve';
 import stadiumResolver from './stadium/retrieve';
 import teamResolver from './team/retrieve';
@@ -9,6 +10,7 @@ const resolvers = {
         teamByName: teamByNameResolver,
         team: teamResolver,
         league: leagueResolver,
+        player: playerResolver,
     },
     Team: {
         social: team => socialResolver(team),
@@ -17,6 +19,10 @@ const resolvers = {
     },
     League: {
         social: league => socialResolver(league),
+    },
+    Player: {
+        social: player => socialResolver(player),
+        team: (player, args, ctx) => teamResolver(player, { teamId: player.idTeam }, ctx),
     }
 };
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import teamTransform from '../transforms/TeamTransform';
+import teamTransform from './TeamTransform';
 
 const teamByNameResolver = async(_, args, ctx) => {
     const url = `${ctx.baseUrl}searchteams.php?t=${args.name}`;
