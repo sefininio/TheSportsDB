@@ -5,6 +5,7 @@ const Queries = `
         team(teamId: ID!): [Team]
         league(leagueId: ID!): [League]
         player(playerId: ID!): [Player]
+        event(eventId: ID!): [Event]
     }
 `;
 
