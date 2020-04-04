@@ -41,5 +41,4 @@ const teamTransform = (data) => {
 
 };
 
-
 export default teamTransform;

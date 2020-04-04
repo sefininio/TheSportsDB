@@ -2,6 +2,7 @@ import { ApolloServer } from 'apollo-server';
 import depthLimit from 'graphql-depth-limit'
 import resolvers from './resolvers';
 import typeDefs from './resources';
+import errorHandler from './ErrorHandler';
 
 const validationRules = [
     depthLimit(3),
@@ -14,6 +15,7 @@ const server = new ApolloServer({
     resolvers,
     context: {
         baseUrl: `https://www.thesportsdb.com/api/v1/json/${apiKey}/`,
+        errorHandler,
     },
     validationRules,
 });

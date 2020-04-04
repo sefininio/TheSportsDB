@@ -4,16 +4,19 @@ import leagueResolver from './league/retrieve';
 import playerResolver from './player/retrieve';
 import socialResolver from './social/retrieve';
 import stadiumResolver from './stadium/retrieve';
+import tableResolver from './table/search';
 import teamResolver from './team/retrieve';
-import teamByNameResolver from './team/search';
+import teamSearchResolver from './team/search';
 
 const resolvers = {
     Query: {
-        teamByName: teamByNameResolver,
+        teamSearch: teamSearchResolver,
         team: teamResolver,
         league: leagueResolver,
         player: playerResolver,
         event: eventResolver,
+        table: tableResolver,
+        tableAllSeasons: tableResolver,
     },
     Team: {
         social: team => socialResolver(team),
@@ -31,6 +34,9 @@ const resolvers = {
         league: (event, args, ctx) => leagueResolver(event, { id: event.idLeague }, ctx),
         home: event => eventTeamResolver(event, EVENT_TYPE.HOME),
         away: event => eventTeamResolver(event, EVENT_TYPE.AWAY),
+    },
+    Table: {
+        team: (table, args, ctx) => teamResolver(table, { id: table.teamid }, ctx),
     }
 };
 
