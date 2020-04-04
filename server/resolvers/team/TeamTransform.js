@@ -1,5 +1,5 @@
 const teamTransform = (data) => {
-    const transformed = data.map(team => {
+    const transformed = data.teams.map(team => {
         const {
             idTeam,
             strTeam,

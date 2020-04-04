@@ -1,15 +1,13 @@
-import axios from 'axios';
 import eventTransform, { eventTeamTransform } from './EventTransform';
+import createRetrieveResolver, { API_ENDPOINTS } from '../CreateRetrieveResolver';
 
-const eventResolver = async(_, args, ctx) => {
-    const url = `${ctx.baseUrl}lookupevent.php?id=${args.eventId}`;
-    const res = await axios.get(url);
-
-    return eventTransform(res.data.events);
-};
+const resolver = createRetrieveResolver({
+    endpoint: API_ENDPOINTS.EVENT,
+    transform: eventTransform,
+});
 
 export const eventTeamResolver = (event, type) => {
     return eventTeamTransform(event, type);
 }
 
-export default eventResolver;
+export default resolver;

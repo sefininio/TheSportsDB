@@ -1,5 +1,5 @@
 const playerTransform = (data) => {
-    const transformed = data.map(player => {
+    const transformed = data.players.map(player => {
         const {
             idPlayer,
             strNationality,

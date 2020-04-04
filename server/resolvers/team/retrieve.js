@@ -1,11 +1,9 @@
-import axios from 'axios';
 import teamTransform from './TeamTransform';
+import createRetrieveResolver, { API_ENDPOINTS } from '../CreateRetrieveResolver';
 
-const teamResolver = async(_, args, ctx) => {
-    const url = `${ctx.baseUrl}lookupteam.php?id=${args.teamId}`;
-    const res = await axios.get(url);
+const resolver = createRetrieveResolver({
+    endpoint: API_ENDPOINTS.TEAM,
+    transform: teamTransform,
+});
 
-    return teamTransform(res.data.teams);
-};
-
-export default teamResolver;
+export default resolver;

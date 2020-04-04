@@ -1,11 +1,9 @@
-import axios from 'axios';
 import playerTransform from './PlayerTransform';
+import createRetrieveResolver, { API_ENDPOINTS } from '../CreateRetrieveResolver';
 
-const playerResolver = async(_, args, ctx) => {
-    const url = `${ctx.baseUrl}lookupplayer.php?id=${args.playerId}`;
-    const res = await axios.get(url);
+const resolver = createRetrieveResolver({
+    endpoint: API_ENDPOINTS.PLAYER,
+    transform: playerTransform,
+});
 
-    return playerTransform(res.data.players);
-};
-
-export default playerResolver;
+export default resolver;

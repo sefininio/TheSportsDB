@@ -18,17 +18,17 @@ const resolvers = {
     Team: {
         social: team => socialResolver(team),
         stadium: team => stadiumResolver(team),
-        league: (team, args, ctx) => leagueResolver(team, { leagueId: team.idLeague }, ctx),
+        league: (team, args, ctx) => leagueResolver(team, { id: team.idLeague }, ctx),
     },
     League: {
         social: league => socialResolver(league),
     },
     Player: {
         social: player => socialResolver(player),
-        team: (player, args, ctx) => teamResolver(player, { teamId: player.idTeam }, ctx),
+        team: (player, args, ctx) => teamResolver(player, { id: player.idTeam }, ctx),
     },
     Event: {
-        league: (event, args, ctx) => leagueResolver(event, { leagueId: event.idLeague }, ctx),
+        league: (event, args, ctx) => leagueResolver(event, { id: event.idLeague }, ctx),
         home: event => eventTeamResolver(event, EVENT_TYPE.HOME),
         away: event => eventTeamResolver(event, EVENT_TYPE.AWAY),
     }

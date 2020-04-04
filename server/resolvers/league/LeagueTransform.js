@@ -1,5 +1,5 @@
 const leagueTransform = (data) => {
-    const transformed = data.map(league => {
+    const transformed = data.leagues.map(league => {
         const {
             idLeague,
             strSport,

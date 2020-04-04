@@ -1,11 +1,9 @@
-import axios from 'axios';
 import leagueTransform from './LeagueTransform';
+import createRetrieveResolver, { API_ENDPOINTS } from '../CreateRetrieveResolver';
 
-const leagueResolver = async(_, args, ctx) => {
-    const url = `${ctx.baseUrl}lookupleague.php?id=${args.leagueId}`;
-    const res = await axios.get(url);
+const resolver = createRetrieveResolver({
+    endpoint: API_ENDPOINTS.LEAGUE,
+    transform: leagueTransform,
+});
 
-    return leagueTransform(res.data.leagues);
-};
-
-export default leagueResolver;
+export default resolver;
