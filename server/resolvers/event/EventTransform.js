@@ -1,6 +1,9 @@
 import EVENT_TYPE from './EventType';
 
 const eventTransform = (data) => {
+    if(!data.events) {
+        throw new Error('Not match `id` on Event.')
+    }
     const transformed = data.events.map(event => {
         const {
             idEvent,

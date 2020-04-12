@@ -1,4 +1,7 @@
 const playerTransform = (data) => {
+    if(!data.players) {
+        throw new Error('Not match `id` on Player.')
+    }
     const transformed = data.players.map(player => {
         const {
             idPlayer,

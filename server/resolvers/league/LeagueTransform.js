@@ -1,4 +1,7 @@
 const leagueTransform = (data) => {
+    if(!data.leagues) {
+        throw new Error('Not match `id` on League.')
+    }
     const transformed = data.leagues.map(league => {
         const {
             idLeague,
