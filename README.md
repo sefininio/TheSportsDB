@@ -2,41 +2,43 @@
 GraphQL wrapper for TheSportsDB
 API doc - https://www.thesportsdb.com/api.php
 
-# Example of query
+## How to use
 
-Query for get types of schema
+### Execute loal server
 
-```
-query {
-    player(id:34145937) {
-        name
-        sportType
-        nationality
-    }
+Two ways for execute local server
+
+#### Using [Visual Studio Code](https://azure.microsoft.com/en-us/products/visual-studio-code/)
+
+Modify configurations of `launch.json`.
+
+```json:.vscode/launch.json
+{
+    ...
+    "configurations": [
+        {
+            ...
+            "runtimeExecutable": null, // Write your node path. (run: 'which node' on terminal)
+            ...
+    ]
 }
 ```
 
-Query for get all fields of `Player`
+Press `F5` for run debugger.
 
-```
-query {
-    __type(name:"Player") {
-        name
-        fields {
-            name
-        }
-    }
-}
+#### Using CLI
+
+Type this command
+
+```bash
+cd server
+npm run local
 ```
 
-Query for get information of `Player` on `id:34145937`
+### Execute query
 
-```
-query {
-    player(id:34145937) {
-        name
-        sportType
-        nationality
-    }
-}
+We are able to install [GraphQL Playground](https://github.com/prisma-labs/graphql-playground) for execute query.
+
+```bash
+brew cask install graphql-playground
 ```
