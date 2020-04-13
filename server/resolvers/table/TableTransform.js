@@ -1,5 +1,5 @@
 const tableTransform = (data) => {
-    const transformed = data.table.map(table => {
+    const transformed = data.map(table => {
         const {
             goalsfor,
             goalsagainst,

@@ -1,7 +1,7 @@
 import EVENT_TYPE from './EventType';
 
 const eventTransform = (data) => {
-    const transformed = data.events.map(event => {
+    const transformed = data.map(event => {
         const {
             idEvent,
             strEvent,

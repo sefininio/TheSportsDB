@@ -1,11 +1,12 @@
 import axios from 'axios';
 import tableTransform from './TableTransform';
+import { createResolver, DATA_PROPS } from '../ResolverFactory';
 
-const aggregate = async(args, ctx) => {
+const aggregate = async(_, args, ctx) => {
     if (args.leagueId && args.seasonId) {
         const url = `${ctx.baseUrl}lookuptable.php?l=${args.leagueId}&s=${args.seasonId}`;
         const res = await axios.get(url);
-        return res;
+        return res.data.table;
     }
 
     // const leagueSeasons = await axios.get(
@@ -24,9 +25,10 @@ const aggregate = async(args, ctx) => {
     // });
 }
 
-const tableResolver = async(_, args, ctx) => {
-    const res = await aggregate(args, ctx);
-    return tableTransform(res.data);
-};
+const resolver = createResolver({
+    dataField: DATA_PROPS.TABLE,
+    aggregate,
+    transform: tableTransform,
+});
 
-export default tableResolver;
+export default resolver;
