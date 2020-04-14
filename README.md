@@ -10,21 +10,7 @@ Two ways for execute local server
 
 #### Using [Visual Studio Code](https://azure.microsoft.com/en-us/products/visual-studio-code/)
 
-Modify configurations of `launch.json`.
-
-```json:.vscode/launch.json
-{
-    ...
-    "configurations": [
-        {
-            ...
-            "runtimeExecutable": null, // Write your node path. (run: 'which node' on terminal)
-            ...
-    ]
-}
-```
-
-Press `F5` for run debugger.
+`.vscode/launch.json` is already prepared in place. Press `F5` key for execute server.
 
 #### Using CLI
 
@@ -37,8 +23,6 @@ npm run local
 
 ### Execute query
 
-We are able to install [GraphQL Playground](https://github.com/prisma-labs/graphql-playground) for execute query.
+We are able to use [GraphQL Playground](https://github.com/prisma-labs/graphql-playground) for execute query. Please open the following url on your browser.
 
-```bash
-brew cask install graphql-playground
-```
+http://localhost:4000/
