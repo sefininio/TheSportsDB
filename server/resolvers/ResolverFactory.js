@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { ApolloError } from 'apollo-server';
-import { errorDispatcher } from '../errors/ErrorDispatcher';
+import {
+    errorDispatcher,
+    validationErrorDispatcher,
+} from '../errors/ErrorDispatcher';
 
 export const API_ENDPOINTS = {
     EVENT: 'lookupevent',
@@ -48,13 +51,13 @@ export const createRetrieveResolver = options => {
  */
 export const createResolver = options => async(_, args, ctx) => {
     if (!options.aggregate || !options.dataField) {
-        return errorDispatcher(_, args, 'Aggregtor function and dataField are required.');
+        return errorDispatcher('Aggregtor function and dataField are required.');
     }
 
     if (options.validate) {
         const validationResult = options.validate(args);
         if (validationResult) {
-            return errorDispatcher(_, args, validationResult);
+            return validationErrorDispatcher(validationResult);
         }
     }
 

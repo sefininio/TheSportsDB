@@ -1,6 +1,7 @@
 import {
     ApolloError,
     UserInputError,
+    ValidationError,
 } from 'apollo-server';
 
 export const errorDispatcher = (message, code) => {
@@ -13,5 +14,11 @@ export const errorDispatcher = (message, code) => {
 export const userInputErrorDispatcher = (message) => {
     throw new UserInputError(
         message || 'Invalid input args.',
+    );
+}
+
+export const validationErrorDispatcher = (message) => {
+    throw new ValidationError(
+        message || 'Validation error.'
     );
 }
