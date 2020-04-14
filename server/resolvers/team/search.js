@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ApolloError } from 'apollo-server';
 import teamTransform from './TeamTransform';
 import { createResolver, DATA_PROPS } from '../ResolverFactory';
-import errorDispatcher from '../../errors/ErrorDispatcher';
+import { userInputErrorDispatcher } from '../../errors/ErrorDispatcher';
 
 const aggregate = async(_, args, ctx) => {
     let url;
@@ -11,7 +11,7 @@ const aggregate = async(_, args, ctx) => {
     } else if (args.leagueId) {
         url = `${ctx.baseUrl}lookup_all_teams.php?id=${args.leagueId}`;
     } else {
-        return errorDispatcher(_, args, 'Cannot search Team: name or leagueId not provided.');
+        return userInputErrorDispatcher('Cannot search Team: name or leagueId not provided.');
     }
 
     const res = await axios.get(url);

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import errorDispatcher from '../errors/ErrorDispatcher';
+import { ApolloError } from 'apollo-server';
+import { errorDispatcher } from '../errors/ErrorDispatcher';
 
 export const API_ENDPOINTS = {
     EVENT: 'lookupevent',

@@ -1,14 +1,17 @@
-import { ApolloError } from 'apollo-server';
+import {
+    ApolloError,
+    UserInputError,
+} from 'apollo-server';
 
-const errorDispatcher = (parent, args, message, code) => {
+export const errorDispatcher = (message, code) => {
     throw new ApolloError(
         message,
         code || 500,
-        {
-            args,
-            parent,
-        }
     );
 }
 
-export default errorDispatcher;
+export const userInputErrorDispatcher = (message) => {
+    throw new UserInputError(
+        message || 'Invalid input args.',
+    );
+}
