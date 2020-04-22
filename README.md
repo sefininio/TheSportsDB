@@ -18,11 +18,13 @@ Type this command
 
 ```bash
 cd server
-npm run local
+yarn install
+yarn run local
 ```
 
 ### Execute query
 
-We are able to use [GraphQL Playground](https://github.com/prisma-labs/graphql-playground) for execute query. Please open the following url on your browser.
+We are able to use [GraphQL Playground](https://github.com/prisma-labs/graphql-playground) for execute queries and mutations.
+It is installed as part of [Apollo](https://www.apollographql.com/docs/react/v3.0-beta/), please open the following url on your browser after the server is running.
 
 http://localhost:4000/
